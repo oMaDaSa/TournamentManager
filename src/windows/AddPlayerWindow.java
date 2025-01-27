@@ -7,6 +7,7 @@ import utils.FileHandler;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
 import java.util.ArrayList;
 
 public class AddPlayerWindow {
@@ -23,6 +24,7 @@ public class AddPlayerWindow {
                 Player player = new Player(playerNameTextField.getText());
                 FileHandler fileHandler = new FileHandler("players.dat");
                 fileHandler.savePlayers(player);
+                playerNameTextField.setText("");
             }
         });
     }

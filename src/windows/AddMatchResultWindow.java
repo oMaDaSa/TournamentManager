@@ -21,6 +21,8 @@ public class AddMatchResultWindow {
     private JLabel playerTwoNameLbl;
     private JLabel playerOnePointsLbl;
     private JLabel playerTwoPoints;
+    private JLabel roundLbl;
+    private JSpinner roundSpnr;
 
     public AddMatchResultWindow(){
         FileHandler fileHandler = new FileHandler("players.dat");
@@ -46,10 +48,14 @@ public class AddMatchResultWindow {
                 Player pTwo = (Player) playerTwoNameCmbBox.getSelectedItem();
                 int pOnePoints = (int) playerOnePointsSpnr.getValue();
                 int pTwoPoints = (int) playerTwoPointsSpnr.getValue();
+                int rodada = (int) roundSpnr.getValue();
 
-                Match match = new Match(pOne, pOnePoints, pTwo, pTwoPoints);
                 FileHandler fileHandler = new FileHandler("matches.dat");
+                Match match = new Match(pOne, pOnePoints, pTwo, pTwoPoints, rodada);
                 fileHandler.saveMatches(match);
+
+                fileHandler = new FileHandler("players.dat");;
+                fileHandler.updatePlayers(match);
             }
         });
     }

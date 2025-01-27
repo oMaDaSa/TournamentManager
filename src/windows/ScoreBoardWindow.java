@@ -26,6 +26,8 @@ public class ScoreBoardWindow {
         ArrayList<Player> players = file.readPlayers();
         players.sort(Comparator.comparingInt(Player::getPoints).thenComparingInt(Player::getPointBalance));
 
+        players.forEach(player -> System.out.println(player.getName() + player.getPoints() + player.getPointBalance()));
+
         DefaultListModel<String> listNames = new DefaultListModel<>();
         players.forEach(player -> listNames.addElement(player.getName()));
         nameLst.setModel(listNames);
