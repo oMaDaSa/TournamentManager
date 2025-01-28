@@ -66,7 +66,6 @@ public class FileHandler {
 
         // Verifica se o arquivo está vazio
         if (file.length() == 0) {
-            System.out.println("Arquivo vazio, retornando lista vazia.");
             return new ArrayList<>();
         }
 
@@ -97,7 +96,6 @@ public class FileHandler {
 
         // Verifica se o arquivo está vazio
         if (file.length() == 0) {
-            System.out.println("Arquivo vazio, retornando lista vazia.");
             return new ArrayList<>();
         }
 
@@ -119,8 +117,6 @@ public class FileHandler {
             }catch (Exception e){
                 System.out.println();
             }
-        }else{
-            System.out.println("arquivo ja existe");
         }
     }
 }
