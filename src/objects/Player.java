@@ -17,6 +17,20 @@ public class Player implements Serializable {
         return name;
     }
 
+    public void win(int points){
+        this.points += 2;
+        this.pointBalance += points;
+    }
+
+    public void tie(int points){
+        this.points += 1;
+        this.pointBalance += points;
+    }
+
+    public void lose(int points){
+        this.pointBalance += points;
+    }
+
     public void setName(String name) {
         this.name = name;
     }
@@ -40,5 +54,11 @@ public class Player implements Serializable {
     @Override
     public String toString() {
         return this.getName();
+    }
+
+    @Override
+    public boolean equals(Object obj){
+        Player objPlayer = (Player) obj;
+        return this.getName().equals(objPlayer.getName());
     }
 }

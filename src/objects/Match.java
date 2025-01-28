@@ -17,9 +17,9 @@ public class Match implements Serializable {
 
     public Match(Player player1, int points1, Player player2, int points2, int round) {
         if (points1 == points2) {
-            tie = false;
-        } else {
             tie = true;
+        } else {
+            tie = false;
             if (points1 > points2) {
                 winner = player1;
                 looser = player2;

@@ -24,7 +24,7 @@ public class ScoreBoardWindow {
     public ScoreBoardWindow(){
         FileHandler file = new FileHandler("players.dat");
         ArrayList<Player> players = file.readPlayers();
-        players.sort(Comparator.comparingInt(Player::getPoints).thenComparingInt(Player::getPointBalance));
+        players.sort(Comparator.comparingInt(Player::getPoints).thenComparingInt(Player::getPointBalance).reversed());
 
         players.forEach(player -> System.out.println(player.getName() + player.getPoints() + player.getPointBalance()));
 

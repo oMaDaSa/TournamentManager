@@ -17,25 +17,28 @@ public class FileHandler {
     public void updatePlayers(Match match){
         ArrayList<Player> players = readPlayers();
 
-        int pWinnerPoints = match.getTie() ? 1 : 2;
-        int pLooserPoints = match.getTie() ? 1 : 0;
+        Boolean tie = match.getTie();
 
         Player winner = match.getWinner();
         Player looser = match.getLooser();
         for(Player i : players) {
             if (i.equals(winner)) {
-                i.setPoints(winner.getPoints() + 2);
-                i.setPointBalance(winner.getPointBalance() + match.getWinnerPoints());
+                if(!tie)
+                    i.win(match.getWinnerPoints());
+                else
+                    i.tie(match.getWinnerPoints());
             }
             else if (i.equals(looser)) {
-                i.setPointBalance(looser.getPointBalance() + match.getLooserPoints());
+                if(!tie)
+                    i.lose(match.getLooserPoints());
+                else
+                    i.tie(match.getLooserPoints());
             }
         }
 
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(path))){
             oos.writeObject(players);
-            System.out.println("Dados salvos com sucesso no arquivo: " + path);
-        } catch (IOException e) {
+           } catch (IOException e) {
             System.err.println("Erro ao salvar os dados: " + e.getMessage());
         }
     }

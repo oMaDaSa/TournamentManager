@@ -34,7 +34,6 @@ public class AddMatchResultWindow {
         players.forEach(playerTwoNames::addElement);
         playerOneNameCmbBox.setModel(playerOneNames);
         playerTwoNameCmbBox.setModel(playerTwoNames);
-        System.out.println(players);
 
         SpinnerNumberModel spinnerOneNumberModel = new SpinnerNumberModel(0, 0, 3, 1);
         SpinnerNumberModel spinnerTwoNumberModel = new SpinnerNumberModel(0, 0, 3, 1);
